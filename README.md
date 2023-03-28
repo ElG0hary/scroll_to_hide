@@ -15,9 +15,6 @@ To use it you need to provide;
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
 ```An Example of using it with BottomNavBar:
 
     class ScrollToHide extends StatelessWidget {
