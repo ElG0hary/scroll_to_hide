@@ -19,11 +19,25 @@ TODO: Include short and useful examples for package users. Add longer examples
 to `/example` folder.
 
 ```An Example of using it with BottomNavBar:
-   ` bottomNavigationBar: ScrollToHideNavBar(
+
+    class ScrollToHide extends StatelessWidget {
+  const ScrollToHide({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('ScrolToHide Package'),
+      ),
+      bottomNavigationBar: ScrollToHideNavBar(
             controller: bottomNavScrollController,
             height: 72,
             child: const BottomNavBar(),
-          ), `
+          ),
+    );
+  }
+} 
+
 ```
 
 ## Additional information
