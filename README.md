@@ -3,7 +3,10 @@
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Preview: 
+
+https://user-images.githubusercontent.com/85020587/228394237-17f6461a-ca97-4166-b307-ac1d6d8f8071.mp4
+
 
 ## Getting started
 
