@@ -43,3 +43,6 @@ To use it you need to provide;<br>
 
 This is Github package Link
 <https://github.com/ElG0hary/scroll_to_hide>
+
+## Pub Dev:
+https://pub.dev/packages/scroll_to_hide
