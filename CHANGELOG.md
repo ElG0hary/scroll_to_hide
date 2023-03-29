@@ -1,3 +1,3 @@
-## 1.0.0
+## 1.0.5
 
-This is a flutter package to hide widgets on scroll
+updated Description, License

@@ -3,7 +3,7 @@
 
 ## Features
 
-Preview: 
+Preview:
 
 <img src="https://user-images.githubusercontent.com/85020587/228395540-58475a13-6ded-4392-95bd-fd0766408aea.gif">
 
@@ -43,6 +43,3 @@ To use it you need to provide;<br>
 
 This is Github package Link
 <https://github.com/ElG0hary/scroll_to_hide>
-
-## Pub Dev:
-https://pub.dev/packages/scroll_to_hide
