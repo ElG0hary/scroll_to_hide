@@ -7,7 +7,7 @@ TODO: List what your package can do. Maybe include images, gifs, or videos.
 
 ## Getting started
 
-To use it you need to provide;
+To use it you need to provide;<br>
     1- ScrollController.<br>
     2- child: Widget that you would like to hide or show(depends on the scroll).<br>
     3- Duration(Optional): how fast to show or hide child widget.<br>
