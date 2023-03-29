@@ -17,7 +17,7 @@ To use it you need to provide;<br>
 
 ```An Example of using it with BottomNavBar:
 
-    class ScrollToHide extends StatelessWidget {
+ class ScrollToHide extends StatelessWidget {
   const ScrollToHide({super.key});
 
   @override
