@@ -6,6 +6,7 @@
 Preview: 
 
 <img src="https://user-images.githubusercontent.com/85020587/228395540-58475a13-6ded-4392-95bd-fd0766408aea.gif">
+
 ## Getting started
 
 To use it you need to provide;<br>
