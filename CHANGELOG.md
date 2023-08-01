@@ -1,5 +1,8 @@
 
 
+## 1.1.1
+
+Updated License.
 ## 1.1.0
 
 Added Documentation, Updated Description.
