@@ -8,7 +8,7 @@ To use the ScrollToHide package, add it as a dependency in your `pubspec.yaml` f
 
 ```yaml
 dependencies:
-  scroll_to_hide: ^1.0.0 
+  scroll_to_hide: ^1.1.0 
   ```
 
 ## Usage
