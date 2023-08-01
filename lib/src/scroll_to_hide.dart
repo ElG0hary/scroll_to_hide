@@ -71,9 +71,7 @@ class _ScrollToHideState extends State<ScrollToHide> {
   /// Shows the child widget if it is currently hidden.
   void show() {
     if (!isShown) {
-      setState(() {
-        isShown = true;
-      });
+      setState(() => isShown = true);
     }
   }
 
