@@ -47,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: ScrollToHide(
         scrollController: _scrollController,
         height: 75,
+        hideDirection: Axis.vertical,
         child: BottomNavigationBar(
           items: const [
             BottomNavigationBarItem(

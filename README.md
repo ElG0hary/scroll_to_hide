@@ -8,17 +8,21 @@ To use the ScrollToHide package, add it as a dependency in your `pubspec.yaml` f
 
 ```yaml
 dependencies:
-  scroll_to_hide: ^2.0.0 
+  scroll_to_hide: ^2.1.0 
   ```
 
-## Usage
+## Import
+
  1- Import the ScrollToHide package in your Dart file:
-  ```
+
+  ```dart
     import 'package:flutter/material.dart';
     import 'package:scroll_to_hide/scroll_to_hide.dart';
   ```
+
  2- Wrap the widget you want to hide when scrolling with the ScrollToHide widget:
-  ```
+
+  ```dart
   ScrollToHide(
     scrollController: _yourScrollController,
     height: _desiredHeight, // The initial height of the widget.
@@ -26,7 +30,9 @@ dependencies:
     child: YourWidgetToHide(),
   ),
   ```
+
 ## Constructor Parameters
+
   The ScrollToHide widget has the following constructor parameters:
 
 scrollController (required): The ScrollController that is connected to the scrollable widget in your app. This is used to track the scroll position and determine whether to hide or show the child widget.
@@ -38,23 +44,37 @@ height (required): The initial height of the child widget. When the widget is hi
 duration: The duration of the animation when the child widget is hidden or shown. By default, it is set to Duration(milliseconds: 300).
 
 ## Methods
+
   The ScrollToHide widget provides two methods that allow you to manually show or hide the child widget:
 
   1- void show(): This method shows the child widget if it is currently hidden.
 
   1- void hide(): This method hides the child widget if it is currently shown.
-## Preview:
+
+## Preview
 
 <img src="https://user-images.githubusercontent.com/85020587/228395540-58475a13-6ded-4392-95bd-fd0766408aea.gif">
 
 ## Usage
 
-```
+```dart
   import 'package:flutter/material.dart';
   import 'package:scroll_to_hide/scroll_to_hide.dart';
 
-  class MyApp extends StatelessWidget {
-    final _scrollController = ScrollController();
+  class ScrollToHideExample extends StatefulWidget {
+    const ScrollToHideExample({super.key});
+
+  @override
+  State<ScrollToHideExample> createState() => _ScrollToHideExampleState();
+  
+  class _ScrollToHideExampleState extends State<ScrollToHideExample> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    _scrollController.dispose();
+  }
 
     @override
     Widget build(BuildContext context) {
@@ -73,10 +93,13 @@ duration: The duration of the animation when the child widget is hidden or shown
       );
     }
   }
+  }
 ```
+
 In this example, the BottomNavigationBar will be hidden when the user scrolls down and shown again when the user scrolls up.
 
 ## Notes
+
 The ScrollToHide widget relies on the ScrollController to track the scroll position. Make sure to initialize and dispose of the ScrollController properly to avoid memory leaks.
 
 It is essential to provide a reasonable value for the height parameter to ensure that the widget has the correct initial height when shown for the first time.

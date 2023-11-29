@@ -20,7 +20,9 @@ class ScrollToHide extends StatefulWidget {
     required this.child,
     required this.scrollController,
     this.duration = const Duration(milliseconds: 300),
-    required this.height,
+    required this.hideDirection,
+    this.width,
+    this.height,
   }) : super(key: key);
 
   /// The widget that you want to hide/show based on the scroll direction.
@@ -34,7 +36,13 @@ class ScrollToHide extends StatefulWidget {
   final Duration duration;
 
   /// The initial height of the child widget. When the widget is hidden, its height will be animated to 0.
-  final double height;
+  final double? height;
+
+  /// The initial width of the child widget, its width will be animated to 0 .by providing width you want the hide direction to be horizontal.
+  final Axis hideDirection;
+
+  /// The initial width of the child widget, its width will be animated to 0 .by providing width you want the hide direction to be horizontal.
+  final double? width;
 
   @override
   State<ScrollToHide> createState() => _ScrollToHideState();
@@ -59,7 +67,14 @@ class _ScrollToHideState extends State<ScrollToHide> {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: widget.duration,
-      height: isShown ? widget.height : 0,
+      height: widget.hideDirection == Axis.vertical
+          ? (isShown ? widget.height : 0)
+          : widget.height,
+      width: widget.hideDirection == Axis.horizontal
+          ? (isShown ? widget.width : 0)
+          : widget.width,
+      curve: Curves.linear,
+      clipBehavior: Clip.none,
       child: Wrap(
         children: [
           widget.child,
@@ -70,14 +85,14 @@ class _ScrollToHideState extends State<ScrollToHide> {
 
   /// Shows the child widget if it is currently hidden.
   void show() {
-    if (!isShown) {
+    if (!isShown && mounted) {
       setState(() => isShown = true);
     }
   }
 
   /// Hides the child widget if it is currently shown.
   void hide() {
-    if (isShown) {
+    if (isShown && mounted) {
       setState(
         () => isShown = false,
       );
