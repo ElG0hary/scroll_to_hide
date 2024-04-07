@@ -65,20 +65,24 @@ class _ScrollToHideState extends State<ScrollToHide> {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
+    return AnimatedOpacity(
       duration: widget.duration,
-      height: widget.hideDirection == Axis.vertical
-          ? (isShown ? widget.height : 0)
-          : widget.height,
-      width: widget.hideDirection == Axis.horizontal
-          ? (isShown ? widget.width : 0)
-          : widget.width,
-      curve: Curves.linear,
-      clipBehavior: Clip.none,
-      child: Wrap(
-        children: [
-          widget.child,
-        ],
+      opacity: isShown ? 1.0 : 0.0,
+      child: AnimatedContainer(
+        duration: widget.duration,
+        height: widget.hideDirection == Axis.vertical
+            ? (isShown ? widget.height : 0)
+            : widget.height,
+        width: widget.hideDirection == Axis.horizontal
+            ? (isShown ? widget.width : 0)
+            : widget.width,
+        curve: Curves.linear,
+        clipBehavior: Clip.none,
+        child: Wrap(
+          children: [
+            widget.child,
+          ],
+        ),
       ),
     );
   }
