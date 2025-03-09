@@ -16,14 +16,14 @@ class ScrollToHide extends StatefulWidget {
   ///
   /// The [height] is the initial height of the child widget. When the widget is hidden, its height will be animated to 0.
   const ScrollToHide({
-    Key? key,
+    super.key,
     required this.child,
     required this.scrollController,
     this.duration = const Duration(milliseconds: 300),
     required this.hideDirection,
     this.width,
     this.height,
-  }) : super(key: key);
+  });
 
   /// The widget that you want to hide/show based on the scroll direction.
   final Widget child;
@@ -59,32 +59,33 @@ class _ScrollToHideState extends State<ScrollToHide> {
 
   @override
   void dispose() {
-    widget.scrollController.removeListener(() {});
+    widget.scrollController.removeListener(listen);
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedOpacity(
-      duration: widget.duration,
-      opacity: isShown ? 1.0 : 0.0,
-      child: AnimatedContainer(
+    if (widget.hideDirection == Axis.horizontal) {
+      return AnimatedSize(
         duration: widget.duration,
-        height: widget.hideDirection == Axis.vertical
-            ? (isShown ? widget.height : 0)
-            : widget.height,
-        width: widget.hideDirection == Axis.horizontal
-            ? (isShown ? widget.width : 0)
-            : widget.width,
+        curve: Curves.linear,
+        child: Container(
+          height: widget.height,
+          width: isShown ? widget.width : 0,
+          clipBehavior: Clip.none,
+          child: widget.child,
+        ),
+      );
+    } else {
+      return AnimatedContainer(
+        duration: widget.duration,
+        height: isShown ? widget.height : 0,
+        width: widget.width,
         curve: Curves.linear,
         clipBehavior: Clip.none,
-        child: Wrap(
-          children: [
-            widget.child,
-          ],
-        ),
-      ),
-    );
+        child: Wrap(children: [widget.child]),
+      );
+    }
   }
 
   /// Shows the child widget if it is currently hidden.
@@ -97,9 +98,7 @@ class _ScrollToHideState extends State<ScrollToHide> {
   /// Hides the child widget if it is currently shown.
   void hide() {
     if (isShown && mounted) {
-      setState(
-        () => isShown = false,
-      );
+      setState(() => isShown = false);
     }
   }
 
