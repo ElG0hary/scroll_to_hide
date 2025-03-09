@@ -1,6 +1,6 @@
 # 2.2.1
 
-[Break Release]Upgrading Environment Variable, SDK + Adding horizontal Hide with animation,minor bug fix,
+[Break Release]Upgrading Environment Variable, SDK
 
 # 2.2.0
 
