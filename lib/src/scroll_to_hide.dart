@@ -23,6 +23,7 @@ class ScrollToHide extends StatefulWidget {
     required this.hideDirection,
     this.width,
     this.height,
+    this.controller,
   });
 
   /// The widget that you want to hide/show based on the scroll direction.
@@ -44,6 +45,9 @@ class ScrollToHide extends StatefulWidget {
   /// The initial width of the child widget, its width will be animated to 0 .by providing width you want the hide direction to be horizontal.
   final double? width;
 
+  /// Allows to easily show or hide the child
+  final ScrollToHideController? controller;
+
   @override
   State<ScrollToHide> createState() => _ScrollToHideState();
 }
@@ -53,6 +57,7 @@ class _ScrollToHideState extends State<ScrollToHide> {
 
   @override
   void initState() {
+    widget.controller?._attach(this);
     widget.scrollController.addListener(listen);
     super.initState();
   }
@@ -110,4 +115,17 @@ class _ScrollToHideState extends State<ScrollToHide> {
       hide();
     }
   }
+}
+
+
+/// Allows to easily show or hide the child
+class ScrollToHideController {
+  _ScrollToHideState? _state;
+
+  void _attach(_ScrollToHideState state) {
+    _state = state;
+  }
+
+  void show() => _state?.show();
+  void hide() => _state?.hide();
 }
