@@ -1,3 +1,3 @@
-library scroll_to_hide;
+library;
 
 export 'src/scroll_to_hide.dart';
