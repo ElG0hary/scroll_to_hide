@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:scroll_to_hide/scroll_to_hide.dart';
 
+final routeObserver = RouteObserver<ModalRoute<void>>();
+
 void main() {
   runApp(const MyApp());
 }
@@ -10,15 +12,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Scroll To Hide Package Example',
-      home: HomeScreen(),
+      navigatorObservers: [routeObserver],
+      home: HomeScreen(routeObserver: routeObserver),
     );
   }
 }
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({super.key, required this.routeObserver});
+
+  final RouteObserver<ModalRoute<void>> routeObserver;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -26,10 +31,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final ScrollController _scrollController = ScrollController();
+
   @override
   void dispose() {
-    super.dispose();
     _scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -44,10 +50,20 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute<void>(
+              builder: (_) => const DetailsScreen(),
+            ),
+          );
+        },
+        child: const Icon(Icons.open_in_new),
+      ),
       bottomNavigationBar: ScrollToHide(
         scrollController: _scrollController,
         height: 75,
-        hideDirection: Axis.vertical,
+        routeObserver: widget.routeObserver,
         child: BottomNavigationBar(
           items: const [
             BottomNavigationBarItem(
@@ -72,8 +88,23 @@ class _HomeScreenState extends State<HomeScreen> {
               label: 'Setting',
             ),
           ],
-          backgroundColor: Colors.black.withOpacity(.7),
+          backgroundColor: Colors.black.withValues(alpha: 0.7),
         ),
+      ),
+    );
+  }
+}
+
+class DetailsScreen extends StatelessWidget {
+  const DetailsScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Details')),
+      body: ListView.builder(
+        itemCount: 60,
+        itemBuilder: (_, index) => ListTile(title: Text('Details item $index')),
       ),
     );
   }

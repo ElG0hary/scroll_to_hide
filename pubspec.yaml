@@ -1,7 +1,8 @@
 name: scroll_to_hide
-description: Scroll_To_Hide packge to hide widgets on scroll, sometimes you want to hide the navbar for example when you scroll a listView or GrideView.
-version: 2.2.1
-homepage: https://github.com/ElG0hary/scroll_to_hide.git
+description: A Flutter widget that hides or shows any child when the user scrolls.
+version: 2.3.0
+homepage: https://github.com/ElG0hary/scroll_to_hide
+repository: https://github.com/ElG0hary/scroll_to_hide
 
 environment:
   sdk: ^3.7.0
@@ -14,6 +15,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
 
 flutter:
